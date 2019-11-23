@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Merca Ya</string>
+    <string name="order_now">Ver mas</string>
+    <string name="action_add_favourite">Ir a Compras</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_shop">Carrito De Compras</string>
+</resources>
