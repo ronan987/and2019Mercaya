@@ -24,7 +24,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Custom
 
     private OnClickInterface myListerner;
 
-    public interface OnClickInterface{
+    public interface OnClickInterface {
         void getItemPosition(int positio);
     }
 
@@ -32,45 +32,52 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Custom
         this.myListerner = myListerner;
     }
 
-    public ProductoAdapter(List<Productos> productos, Context mContext) {
+    public ProductoAdapter(List<Productos> productos,Context mContext) {
         this.mContext = mContext;
         this.productos = productos;
     }
 
 
-    public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.product, parent, false);
+    public CustomViewHolder onCreateViewHolder(ViewGroup parent,int viewType) {
+        View itemView = LayoutInflater.from( parent.getContext() )
+                .inflate( R.layout.product,parent,false );
 
-        return new CustomViewHolder(itemView);
+        return new CustomViewHolder( itemView );
     }
 
 
-    public void onBindViewHolder(final ProductoAdapter.CustomViewHolder holder, int position) {
-        Productos producto = productos.get(position);
-        holder.name.setText(producto.getName());
-        holder.detalle.setText(producto.getdetalle());
-        holder.image.setImageResource(producto.getImageResource());
-        holder.detalle.setOnClickListener(new View.OnClickListener() {
+    public void onBindViewHolder(final ProductoAdapter.CustomViewHolder holder,int position) {
+        final Productos producto = productos.get( position );
+        holder.name.setText( producto.getName() );
+        holder.detalle.setText( producto.getdetalle() );
+        holder.image.setImageResource( producto.getImageResource() );
+
+        holder.detalle.setOnClickListener( new View.OnClickListener() {
 
             public void onClick(View view) {
-                showOptionsMenu(holder.detalle);
+                Intent intent= new Intent(mContext,ScrollingActivity.class );
+                intent.putExtra( "name",producto.getImageResource() );
+                intent.putExtra( "name",producto.getName() );
+                mContext.startActivity(intent);
+
+              showOptionsMenu( holder.detalle );
+
+
             }
-        });
+        } );
     }
 
     /**
      * opciones en el menu de cada imagen
      */
     private void showOptionsMenu(View view) {
-        PopupMenu popup = new PopupMenu(mContext, view);
+        PopupMenu popup = new PopupMenu( mContext,view );
         MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.menu_producto, popup.getMenu());
+        inflater.inflate( R.menu.menu_producto,popup.getMenu() );
 
         popup.show();
 
     }
-
 
 
     public int getItemCount() {
@@ -87,29 +94,29 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Custom
          * @param itemView
          */
         public CustomViewHolder(View itemView) {
-            super(itemView);
-            name = (TextView) itemView.findViewById(R.id.Name);
-            detalle = (TextView) itemView.findViewById(R.id.detalle);
-            image = (ImageView) itemView.findViewById(R.id.Image);
+            super( itemView );
+            name = (TextView) itemView.findViewById( R.id.Name );
+            detalle = (TextView) itemView.findViewById( R.id.detalle );
+            image = (ImageView) itemView.findViewById( R.id.Image );
 
 
-            image.setOnClickListener(new View.OnClickListener() {
+            image.setOnClickListener( new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (myListerner!=null){
+                    if (myListerner != null) {
                         int position = getLayoutPosition();
-                        if (position!= RecyclerView.NO_POSITION){
-                            myListerner.getItemPosition(position);
+                        if (position != RecyclerView.NO_POSITION) {
+                            myListerner.getItemPosition( position );
                         }
                     }
                 }
-            });
+            } );
 
         }
     }
 
 
-    }
+}
 
 
 

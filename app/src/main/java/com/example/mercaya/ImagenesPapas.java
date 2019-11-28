@@ -24,16 +24,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ImagenesPapas extends AppCompatActivity implements View.OnClickListener {
+public class ImagenesPapas extends AppCompatActivity {
+
     TextView txtnombre, txtdetalle;
     ImageView img;
+    String name, detalle;
+    int image;
 
     int position = -1;
 
 
     List<Productos> listaFrutas = new ArrayList<>();
     RecyclerView recyclerView;
-    ProductoAdapter adapter = new ProductoAdapter( listaFrutas, this );
+    ProductoAdapter adapter = new ProductoAdapter( listaFrutas,this );
 
 
     @Override
@@ -42,6 +45,9 @@ public class ImagenesPapas extends AppCompatActivity implements View.OnClickList
         setContentView( R.layout.product );
 
 
+        image = getIntent().getIntExtra( "image",0 );
+        name = getIntent().getStringExtra( "nombre" );
+        detalle = getIntent().getStringExtra( "detalle" );
 
 
         txtnombre = findViewById( R.id.Name );
@@ -51,7 +57,7 @@ public class ImagenesPapas extends AppCompatActivity implements View.OnClickList
 
         llenarFrutas();
         recyclerView = findViewById( R.id.recycler_view );
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager( this, 2 );
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager( this,2 );
         recyclerView.setLayoutManager( mLayoutManager );
         recyclerView.setItemAnimator( new DefaultItemAnimator() );
         recyclerView.setAdapter( adapter );
@@ -60,28 +66,24 @@ public class ImagenesPapas extends AppCompatActivity implements View.OnClickList
     }
 
     private void llenarFrutas() {
-        Productos product = new Productos( "Papas", R.drawable.papas, "Ver mas" );
+        Productos product = new Productos( "Papas",R.drawable.papas,"Ver mas" );
         listaFrutas.add( product );
-        product = new Productos( "Granos y Cereales", R.drawable.granos, "Ver mas" );
+        product = new Productos( "Granos y Cereales",R.drawable.granos,"Ver mas" );
         listaFrutas.add( product );
-        product = new Productos( "Frutas", R.drawable.frutas_variadas, "Ver mas" );
+        product = new Productos( "Frutas",R.drawable.frutas_variadas,"Ver mas" );
         listaFrutas.add( product );
 
 
-        product = new Productos( "Frutas", R.drawable.frutas_variadas, "Ver mas" );
+        product = new Productos( "Frutas",R.drawable.frutas_variadas,"Ver mas" );
         listaFrutas.add( product );
-        product = new Productos( "Frutas", R.drawable.frutas_variadas, "Ver mas" );
+        product = new Productos( "Frutas",R.drawable.frutas_variadas,"Ver mas" );
         listaFrutas.add( product );
-        product = new Productos( "Frutas", R.drawable.frutas_variadas, "Ver mas" );
+        product = new Productos( "Frutas",R.drawable.frutas_variadas,"Ver mas" );
         listaFrutas.add( product );
 
 
     }
 
 
-    @Override
-    public void onClick(View v) {
-
-    }
 }
 

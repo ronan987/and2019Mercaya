@@ -36,10 +36,10 @@ public class ScrollingActivity extends AppCompatActivity {
 
             pAdapter.setMyListerner(new ProductoAdapter.OnClickInterface() {
                 @Override
-                public void getItemPosition(int positio) {
+                public void getItemPosition(int position) {
                     Intent i = new Intent(getBaseContext(),ImagenesPapas.class);
                     startActivity(i);
-                    Toast.makeText(ScrollingActivity.this, ""+positio, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ScrollingActivity.this, ""+position, Toast.LENGTH_SHORT).show();
                 }
             });
 

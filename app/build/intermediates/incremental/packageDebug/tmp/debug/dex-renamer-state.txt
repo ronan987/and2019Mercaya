@@ -1,4 +1,4 @@
-#Sat Nov 23 15:40:24 COT 2019
-base.0=D\:\\instalers\\mercaya-master\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+#Thu Nov 28 11:09:39 COT 2019
+base.0=E\:\\ANDROIDPROYECTS\\and2019Mercaya\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
